@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>int.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p>[toc]
+#含参量积分
+现在我们来处理无赖积分[^2]
+在《别闹了，弗曼先生》中的“跟数学家抬杠”这一章中，我们的数学家弗曼先生谈到一种积分方法。我们引用原文：
+$~<s><s><s><s><s>$“ 事情是这样的：一天下课之后，他叫我留下。“费曼，” 他说，“你上课时话太多了，声音又太大。我知道你觉得这些课太沉闷，现在我给你这本书。以后你坐到后面角落去好好读这本书，等你全弄懂了之后，我才准你讲话。”
+$</s></s></s></s></s>~$于是每到上物理课时，不管老师教的是帕斯卡定律或是别的什么，我都一概不理。我坐在教室的角落，念伍兹（woods）著的这本《高等微积分学》。贝德知道我念过一点《实用微积分》，因此他给我这本真正的大部头著作——给大学二三年级学生念的教材。书内有傅立叶级数、贝塞尔函数、行列式、椭圆函数——各种我前所未知的奇妙东西。
+$~~~~~~~~~~~$ <strong>那本书还教你如何对积分符号内的参数求微分。后来我发现，一般大学课程并不怎么教这个技巧，但我掌握了它的用法，往后还一再地用到它。因此，靠着自修那本书，我做积分的方法往往与众不同”</strong></p>
+<p>我并不打算用什么复杂的公理化的语言来讲这么个东西，没必要，要不然这笔记就没用了，这是写给像我这样子的人看的。不是给某些“数学天才”又或者是什么乱七八糟天才看的，因为他们都没必要看。但由于涉及到数学，所以有点枯燥是无可奈何的。</p>
+<p>##含参量正常积分
+我们设一个区域用来当函数的取值范围，或者说是围起来的面积，由于是面积，那么他必然是二维的的，不是一条直线。那么他必然是一个二重积分。我们让$x \in [a,b]$，$y \in [c,d]$有定义：
+设
+$$
+f(x,y) \in R,{R^2 = [a,b] \times [c,d] }
+$$
+这句话是说函数是定义在矩形区域$[a,b] \times [c,d]$的一个二元函数，并且函数在$[c,d]$上以y为自变量的一元函数。记作：
+$$
+I(x) = \int^{d}<em>{c}f(x,y)dy,x\in [a,b]
+$$
+我们设：$f(x,y)$为定义在区域$G = |(x,y)|$[^1] $，c(x) \leq y \leq d(x), ~<s>a \leq x \leq b $
+那么$c(x)，d(x)$是定义在$[a,b]$上的连续函数，当我们确定了每一个x的值的时候，那么必定能取得$c(x) 和 d(x)$，既然取得到，那么就能取积分则$f(x,y)$作为$y$的函数在闭区间$[c(x),d(x)]$上可积, 它的积分值是$x$在$[a,b]$这个定义域取值的函数,也就是那两个$c(x),d(x)$。为了方便使用，我们用一个大写字母$F$表示这种关系。即：
+$$
+F(x) = \int^{d(x)}</em>{c(x)}f(x,y)dy,<s>x \in [a,b]
+$$
+我们讲，这个是定义在$[a,b]$上含参量x的正常积分，简称为含参积分
+$</s>~~~</s>~~$接下来我们讨论连续性。
+##连续性定理：
+设$f(x,y)$在闭区间$D = [a,b] \times [c,d]$于是有：
+$$
+I(x + \Delta x) - I(x) \leq  \int^{d}<em>{c} |f(x + \Delta x,y -f(x,y))dy \leq \int^{d}</em>{c}
+$$
+若有
+$$
+|x_1 -x_2| &lt; \delta ，|y_1 -y_2| &lt; \delta
+$$
+那么有：
+$$
+|f(x_1,y_1) - f(x_2,y_2)| &lt; \epsilon
+$$
+那么我们可以得到：
+$$
+I(x+\delta x) - I(x) &lt; \int^{d}<em>{c} \epsilon dx = \epsilon (d-c)
+$$
+由于$\epsilon$存在，他依存于x的变量，因为是$I(\Delta x)$，所以是$dx$
+那么证明了连续之后。对于这个定理也可以写成：
+$$
+\lim</em>{x\rightarrow x_0}\int^{d}_{c} f(x,y)dy
+$$
+我们根据极限的连续定义也可以把这个积分看成是$x_0$的函数，所以积分和极限符号是可以交换的。所以有</p>
+<p>$$
+\int^{d}<em>{c} \lim</em>{x \rightarrow x_0}f(x,y)dy
+$$
+因为函数在有界闭域$D$中连续，从而一至连续。[^3]</p>
+<p>###例题1、</p>
+<p>$$
+\lim_{a \rightarrow 0}\int^{1+\alpha}_{\alpha} \frac{dx}{1+x^2+\alpha^2}
+$$
+我们记这个函数为$I(\alpha)$,则有
+$$
+I(\alpha) = I(0) = \int^{1}_0 \frac{dx}{1+x^2} = \frac{\pi}{4}
+$$</p>
+<p>##可微性
+若函数$f(x,y)$跟它的偏导数$\frac{	\partial}{	\partial x}f(x,y)$[^4]都在矩形区域$D = [a,b] \times [c,d]$上连续则：
+$$
+I(x) = \int^{d}<em>{c}f(x,y)dy
+$$
+在$[a,b]$上可微。且：导数和积分可以交换运算顺序，即：
+$$
+\frac{d}{dx}\int^{d}</em>{c}f(x,y)dy = \int^{d}_{c}\frac{	\partial}{	\partial x}f(x,y)dy
+$$
+证明如下：</p>
+<p>对于$[a,b]$任意一点$~x~$，设$x + \Delta x\in [a,b]$
+存在导数如下：
+$$
+\frac{I(x + \Delta x) -I(x)}{\Delta x} = \int^{d}_{c}\frac{f(x + \Delta x,y) - f(x,y)}{\Delta x}dy
+$$
+###拉格朗日中值定理。
+拉格朗日指的是总能在函数取到一点$\epsilon$使得$f(b)-f(a) = f'(\epsilon)(b-a) $，我们把它变形得到：
+$$
+\frac{f(b)-f(a)}{b-a} = f'(\epsilon)
+$$
+这个公式是讲，我们能取到一个点，使得它的导数与$|b-a|$这条直线平行。但他有另一种表现形式。即：
+$$
+f(b)-f(a) = \Delta y = f'(x+\theta\Delta x) \times \Delta x，\theta \in (0,1)
+$$
+这里出现了一个新的符合$<s>\theta</s>$。接下来为了方便理解我讲一个东西。
+一个数乘以一个分数，例如 $10 \times \frac{1}{2}$，那么是不是取一半的值得到$5$，既然$\theta \in （0,1）$那么就说明乘以这个符号只是在取$b-a$的某段数值。</p>
+<p>回到证明上面来。
+由拉格朗日中值定理和我们知道函数连续，只要给出正数$\epsilon$，有$\sigma$，只要有$|\Delta x| &lt; \sigma$，根据定义有
+$$
+|\frac{f(x + \Delta x,y)}{\Delta x} - f_{x}(x,y)| &lt; \epsilon
+$$
+因此
+$$
+\frac{I(x +\Delta x) - I(x)}{\Delta x} = \int^{d}_{c} \frac{f(x + \Delta x, y)-f(x,y)}{\Delta x}dy
+$$
+积分内的偏导减去对x的偏导满足存在$\epsilon(d-c)$
+所以定理是成立的
+所以我们可以先对函数求偏导，然后积两次分得到差不多的数值运算。这里我先不讲关于狄利克雷积分的方法，因为这涉及到收敛因子。我们说一个简单的例子。
+##例题</p>
+<p>$$
+F(x) = \int^{y}_{0}\frac{ln(1+xy)}{x}dx ,x &gt; 0
+$$
+$$F'(x) = \frac{ln(1+y^2)}{y} + \int^{y}_0 \frac{dx}{1+xy} = \frac{2}{y}ln(1+y^2)$$
+第一部分是消去积分和导数两个符号。第二个是对另一个变量求导。
+我们讲最后一个例子结束文章。</p>
+<p>##最后一个
+$$
+\int^{1}<em>0 \frac{x^5-1}{lnx}dx
+$$
+设 $\alpha$替换$5$
+$$
+\int^{1}<em>0 \frac{x^{\alpha}-1}{lnx}dx
+$$
+$$
+f'(\alpha) = \frac{d}{d \alpha}\int^{1}</em>{0}\frac{x^\alpha -1}{lnx}dx
+$$
+我们知道积分和求导可以互换，我们换过来求导得到：
+$$
+\int^{1}</em>{0}\frac{x^\alpha lnx}{lnx}dx = \frac{1}{a+1}
+$$</p>
+<p>$$
+f'(\alpha) = \frac{1}{a+1} , ~~~f(\alpha) = ln(\alpha +1) +c
+$$
+[^1]:这里取绝对值是说面积不因不同象限带负号而抵消，而是把不同象限的面积全部加起来
+[^2]:我喜欢叫他无赖积分是因为他没有原函数，像狄利克雷积分：$\int\frac{sinx}{x}dx$
+[^3]:这里的证明是关于度量空间的证明，有两个度量空间$dX,~~dY$，且$dY$由$dX$的定义域生成并且映射，则说明若$dX$连续，则度量空间$dY$连续。
+[^4]:这里是对x求偏导</p>
+
+</body>
+</html>
