@@ -1,0 +1,277 @@
+\documentclass[UTF8]{article}
+\usepackage{ctex}
+\usepackage[colorlinks]{hyperref}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{yhmath} 
+\usepackage{wasysym}
+\usepackage{indentfirst}
+\usepackage{siunitx}
+\usepackage{wasysym}
+\usepackage{framed}
+\usepackage[dvipsnames,svgnames]{xcolor}
+\usepackage{tcolorbox}
+\usepackage[strict]{changepage}
+\usepackage{tikz}
+\usepackage{xcolor}
+\title{尼尔森-施赖埃尔定理}	
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\newpage
+	\section{尼尔森-施赖埃尔定理}
+	
+	\subsection{定义}
+	设$S$是群$G$的子群，$S$在$G$中的一个\textbf{陪集代表系}$l$指的是$G$的一个如下定义的子集，它由每个陪集$Sb$中恰好取出一个元素$\ell(Sb) \in Sb$组成，并且满足$\ell(S) = 1$ \footnote{就像同余类一样，对$\mod n$都有集合$\{[1],[2],\cdots,[n-1]\}$，其中$1,2,\cdots,n-1$是代表元，也就是定义中的$b$}
+	
+	设$F$是以$X$为基的自由群，再设$S$是$F$的子群，给定$S$在$F$中的一个陪集代表系$\ell$，则对每个$x\in X$，$\ell(Sb)x$和$\ell(Sbx)$都在陪集$Sbx$中，从而
+	$$
+	t_{Sb,x} = \ell(Sb)x\ell(Sbx)^{-1}
+	$$
+	也在$S$中，可能有任意的$s_1\in S$和$s_2\in S$，使得$s_1bx * (s_2bx)^{-1} = s_1s^{-1}_2\in S$
+	
+	所以，不等于1的一切$t_{Sb,x}$的集合组成$S$的一组基。可知$S$是自由的。
+	
+	现在设$l$是自由群$F$的子群$S$的一个陪集代表系，元素$t_{Sb,x}$如上。定义$Y$为符号$y_{Sb,x}$上的自由群。从而$y_{Sb,x} \mapsto t_{Sb,x}$是双射，定义$\varphi :Y \to S$为
+	$$
+	\varphi :y_{Sb,x} \mapsto t_{Sb,x} = \ell(Sb)x\ell(Sbx)^{-1}
+	$$
+	的同态。 
+	
+	现在先定义陪集函数$F\to Y$。每个陪集$Sb$对应一个陪集函数。记为$u\mapsto u^{Sb}$。这些函数不是同态，我们对$\mid u\mid \geq 0$用归纳法同时定义他们，其中$u$是$X$上的约化字。对所有$x\in X$和所有陪集$Sb$，定义
+	
+	$$
+	1^{Sb} = 1, x^{Sb} = y_{Sb,x}, (x^{-1})^{Sb} = (x^{Sbx^{-1}})^{-1}
+	$$
+	若$u = x^\epsilon v$是长度为$n+1$的约化字，其中$\epsilon = \pm 1$且$\mid v\mid =n$，定义
+	$$
+	u^{Sb} = (x^\epsilon)^{Sb}v^{Sbx^
+	\epsilon}
+	$$
+	
+	\newpage
+	\subsection{引理}
+	
+	\begin{enumerate}
+		\item 对所有$u,v\in F$，陪集函数满足$(uv)^{Sb} = u^{Sb}v^{Sbu}$
+		\item 对所有$u\in F$，$(u^{-1})^{Sb} = (u^{Sbu^{-1}})^{-1}$
+		\item 若$\varphi :Y\to S$是定义如下的同态：$\varphi:y_{Sb,x}\mapsto t_{Sb,x} = \ell(Sb)x\ell(Sbx)^{-1}$，则对所有的$u\in F$,$\varphi(u^{Sb}) = \ell(Sb)u\ell(Sbu)^{-1}$
+		\item 由$\theta:u \mapsto u^S$给定的函数$\theta:S\to Y$是同态，并且$\varphi\theta = 1_S$
+	\end{enumerate}
+	
+	\paragraph{证明：}我们对$\mid u\mid $进行归纳，其中$u$是既约字。当$\mid u \mid = 0$的时候，$u =1$，则$(uv)^{Sb} = v^{Sb}$。对于等式右边，$1^{Sb}v^{Sb1} = v^{Sb}$
+	
+	对于归纳步骤，我们记$u = x^\epsilon w$，则
+	$$
+	\begin{aligned}
+			(uv)^{Sb} =& (x^\epsilon)^{Sb}(wv)^{Sbx^\epsilon} & \text{陪集函数定义}\\
+			=&(x^\epsilon)^{Sb} w^{Sbx^\epsilon}v^{Sbx^\epsilon w}& \text{由归纳假设得到}\\
+			=&(x^\epsilon)^{Sb}w^{Sbx^\epsilon} v^{Sbu}\\
+			=& (x^\epsilon w)^{Sb} v^{Sbu}\\
+			=& u^{Sb}v^{Sbu}
+	\end{aligned}
+	$$
+	
+	对第二个命题，注意到
+	$$
+	1 = 1^{Sb} = (u^{-1}u)^{Sb} = (u^{-1})^{Sb} (u^{Sbu})^{-1}
+	$$
+	
+	对第三个命题，注意$\varphi$确实是定义了一个同态，利用自由群的定义，$Y$是以所有$y_{Sb,x}$为基的自由群。我们依然是对$\mid u\mid \geq  0$做归纳。 
+	
+	首先，对$\varphi(1^{Sb}) = \varphi(1) = 1$，因为$\ell(S)1\ell(S1)^{-1} = 1$
+	
+	对归纳步骤，我们令$u = x^\epsilon v$，其中$u$是既约的，则
+	$$ 
+	\begin{aligned}
+			\varphi(u^{Sb}) = \varphi((x^\epsilon v)^{Sb}) = &\varphi((x^\epsilon)^{Sb} v^{Sbx^\epsilon})\\
+		=& \varphi((x^\epsilon)^{Sb})\varphi(v^{Sbx^\epsilon})\\
+		=& \varphi\left((x^{\varepsilon})^{Sb}\right)\ell(Sb x^{\varepsilon}) v \ell(Sb x^{\varepsilon} v)^{-1}
+	\end{aligned}
+	$$
+	
+	最后一个等号来自归纳假设，那么对$\epsilon$，有两种情况，若$\epsilon = 1$，则
+	$$
+	\begin{aligned}
+		\varphi(u^{Sb}) &= \ell(Sb) x \ell(Sb x)^{-1} \ell(Sb x) v \ell(Sb x v)^{-1} \\
+		&= \ell(Sb) x v \ell(Sb x v)^{-1} \\
+		&= \ell(Sb) u \ell(Sb u)^{-1}.
+	\end{aligned}
+	$$
+	
+	若$\epsilon = -1$，则
+	
+	$$
+	\begin{aligned}
+		\varphi(u^{Sb}) =\varphi(x^{-1}v) &=  \varphi((y_{Sbx^{-1},x})^{-1})\ell(Sbx^{-1})v\ell(Sbx^{-1}v)^{-1}\\
+		&= \left(\ell(Sbx^{-1}) x \ell(Sbx^{-1}x)^{-1}\right)^{-1} \ell(Sbx^{-1}) v \ell(Sbx^{-1}v)^{-1} \\
+		&= \ell(Sb) x^{-1} \ell(Sbx^{-1})^{-1} \ell(Sbx^{-1}) v \ell(Sbx^{-1}v)^{-1} \\
+		&= \ell(Sb) x^{-1} v \ell(Sbx^{-1}v)^{-1} \\
+		&= \ell(Sb) u \ell(Sbu)^{-1}.
+	\end{aligned}
+	$$
+	
+	对第四个命题，定义$\theta:S\to Y$为
+	$$
+	\theta:u\mapsto u^S
+	$$
+	$\theta$是$b=1$时，陪集函数$u\mapsto u^{Sb}$对$S$的限制。现在，若$u,v\in S$，则
+	$$
+	\theta(uv) = (uv)^S = u^Sv^{Su} = u^Sv^S = \theta(u)\theta(v)
+	$$
+	因为$Su = S$，其中$u\in S$，所以$\theta$是一个同态，更多的。若$u\in S$，则由第三个定理给出
+	$$
+	\varphi\theta(u) = \varphi(u^S) = \ell(S1)u\ell(S1u)^{-1} = u
+	$$
+	\subsection{推论}
+	
+	若$S$是自由群$F$的子群且$\ell$是$S$在$F$中的陪集代表系，则所有不等于1的$ t_{Sb,x}$生成$S$
+	
+	\paragraph{证明：}由于$\varphi\theta = 1_S$，函数$\varphi:Y \to S$是一个满射，因此Y的生成元$y_{Sb,x}$的像$t_{Sb,x}$生成$\text{im}\varphi = S$
+	
+	接着我们试着证明$S$有表现
+	$$
+	S = \{y_{Sb,x},\text{所有}x\in X,\text{所有陪集}Sb\mid \ell(Sb)^S,\text{所有陪集}Sb\}
+	$$
+	
+	\newpage
+	\subsection{引理}若$\ell$是$S$在$F$中的陪集代表系，则$\ker\varphi$是一切$\ell(Sb)^S$生成的$Y$的正规子群。
+	
+	\paragraph{证明：}令$N$是所有$\ell(Sb)^S$生成的$Y$的正规子群，再令$K = \ker\varphi$。由引理1.2的4，$\theta:S\to Y$是一个同态且$\varphi\theta = 1_S$，其中$\varphi:y_{Sb,x} \mapsto t_{Sb,x}$且$\theta:u\mapsto u^S$
+	
+	现在，引入命题
+	
+	\begin{framed}
+		设 \( Y \) 和 \( S \) 是群，并设 \(\varphi : Y \rightarrow S\) 和 \(\theta : S \rightarrow Y\) 是同态满足 \(\varphi \theta = 1_S\)。
+		
+		（Ⅰ）如果 \(\rho : Y \rightarrow Y\) 定义为 \(\rho = \theta \varphi\)，证明 \(\rho \rho = \rho\) 以及对每个 \(a \in \operatorname{im}\theta\), \(\rho(a) = a\)。（同态 \(\rho\) 叫做收缩。）
+		
+		（Ⅱ）如果 \(K\) 是 \(Y\) 的正规子群，它由一切 \(y^{-1} \rho(y)\) 生成，其中 \(y \in Y\)，证明 \(K = \ker\varphi\)。
+		
+		\text{证明：}$\rho\rho = \theta\varphi\theta\varphi = \theta 1 \varphi = \rho$。现在，对$a\in \text{im}\theta$，设$a = \theta(b)$，就有$\rho(a) = \rho(\theta(b)) = \theta(\varphi(\theta(b))) = \theta(b) = a$
+		
+		\text{证明2：}现在$K\lhd Y$，其中$K = \{y^{-1}\rho(y):y\in Y\}$,那么$\varphi(k) = \varphi(y^{-1}\rho(y)) = \varphi(y^{-1} \theta\varphi(y^{-1})) = \varphi(y^{-1}) (\varphi\circ \theta\circ\varphi(y)) = \varphi(y^{-1} * y) = \varphi(1) = 1$，其中$k\in K$
+		
+		
+	\end{framed}
+	因此，由上述命题，$K$是由$\{y^{-1}\rho(y):y\in Y\}$生成的正规子群，其中$\rho = \theta\varphi$。现在，由引理1.2的1.就有
+	
+	$$
+\begin{aligned}
+	y_{Sb,x}^{-1}\rho(y_{Sb,x}) &= y_{Sb,x}^{-1}\left(\ell(Sb)x\ell(Sbx)^{-1}\right)^S \\
+	&= y_{Sb,x}^{-1}\ell(Sb)^S x^{Sb}\left(\ell(Sbx)^{-1}\right)^{Sbx} \\
+	&= \left( y_{Sb,x}^{-1}\ell(Sb)^Sy_{Sb,x}\right)\left(\ell(Sbx)^{-1}\right)^{Sbx},
+\end{aligned}
+	$$
+	
+	其中$x^{Sb} = y_{Sb,x}$是陪集函数$u\to u^{Sb}$定义中的一个等式。引理1.2的2给出$(\ell(Sbx)^{-1})^{Sbx} = (\ell(Sbx)^S)^{-1}$。则
+
+	$$
+	y_{Sb,x}^{-1}\rho(y_{Sb,x}) = y^{-1}_{Sb,x}\ell(Sb)^S y_{Sb,x}(\ell(Sbx)^S)^{-1}
+	$$
+	由上述等式，则$y^{-1}_{Sb,x}\rho(y_{Sb,x}) \in N$，从而$K\leq N$。因为正规子群对共轭封闭。$ y^{-1}_{Sb,x}\ell(Sb)^S y_{Sb,x}\in N$。现在，$N$是所有陪集生成的群，那么$\ell(Sbx)^S \in N$，由封闭性可知$((\ell{Sbx})^S)^{-1}$也在N中。所以$K \leq N$
+	
+	
+	对于反包含，$\ell(Sb)^S\in K$当且仅当$\ell(Sbx)^S\in K$。
+	
+	现在，我们对$\mid \ell(Sb)\mid $归纳来证明另一个包含光系，当$\mid \ell(Sb)\mid =0 $的时候，就有$y^{-1}_{1,x}\rho(y_{1,x}) = 1\Rightarrow 1 = 1$
+	
+	剩下的以后再补
+	
+	\subsection{定义：施赖埃尔陪集代表系}
+	
+	我们设$F$是以$X$为基的自由群，并设$S$是$ F$的子群，一个\textbf{施赖埃尔陪集代表系}指的是满足下列性质的陪集代表系$\ell$，若$\ell(Sb) = x^{\epsilon_1}_1 x^{\epsilon_2}_2\cdots x_n^{\epsilon_n}$是既约的，则每个初始段$x_1^{\epsilon_1}\cdots x_k^{\epsilon_k}$也在陪集代表系中，其中$1\leq k \leq n$
+	
+	\subsection{引理}
+	$F$的每个子群$S$都存在施赖埃尔陪集代表系
+	
+	\paragraph{证明：} 我们定义陪集$Sb$的长度为元素$sb\in Sb$的最小长度，记为$\mid Sb\mid $，现在对$\mid Sb\mid $用归纳法。我们要证明存在代表元$\ell(Sb)\in Sb$使得其对一切初始段都是长度较短的陪集的代表元。
+	
+	一开始定义$\ell(S) = 1$。现在，对归纳假设我们有$\mid Sz \mid = n+1$和$ux^\epsilon \in Sz$，其中$z  =\pm 1$和$\mid ux^\epsilon\mid = n+1$。若$\mid Su\mid = m < n$，那么就会有一个长度为$m$的代表元$v$，使得$vx^\epsilon$是$Sz$的代表元\footnote{考虑$H = \{(1),(12)\}$，陪集$(13)H = \{(13),(123)\}$，所以有两个代表元$(13)H,(123)H$，但他们是一样的，可以替换$(123)$为$(13)$}。但$vx^\epsilon<n+1$，所以$\mid Su\mid = n$。由归纳假设，存在$b=\ell(Su)$使得每个初始段也是代表元。于是定义$\ell(Sz) = bx^\epsilon$
+	
+	\subsection{尼尔森-施赖埃尔定理}
+	
+	自由群$F$的每个子群$S$都是自由的，实际上，若$X$是$F$的基，$\ell$是$S$在$F$中的施赖埃尔陪集代表系，则$S$的一个基由一切不等于1的$t_{Sb,x} = \ell(Sb)x\ell(Sbx)^{-1}$组成
+	
+	\newpage
+	\paragraph{证明：} 对引理的1.2的$\varphi$应用第一同构定理，就有$S\cong Y/K$，其中$Y$是一切符号$y_{Sb,x}$为基的自由群，而$K = \ker\varphi$，利用引理$1.4$，现在$K$等价于一切$\ell(Sb)^S$生成的正规子群。利用下述习题
+	
+	
+	\begin{framed}
+		设$F$是以$X$为基的自由群且$A\subseteq X$，证明若$N$是$A$生成的$F$的正规子群，则$F/N$是自由群
+	\end{framed}
+	
+	我们只需要证明$K$等于一切特定的$y_{Sb,x}$生成的$Y$的正规子群$T$。也就是满足$\varphi(y_{Sb,x}) = 1 = t_{Sb,x}$的那些$y_{Sb,x}$。显然的是，利用定义有$T\leq K = \ker\varphi$，现在我们来证明反包含。
+	
+	我们对$\mid \ell(Sv)\mid $用归纳法证明。若$\mid \ell(Sv)\mid = 0$，则$\mid \ell(Sv)\mid =  \ell(S)  = 1$。现在，若$\mid \ell(Sv)\mid > 0$，则$\ell(Sv) = ux^\epsilon$，其中$\epsilon = \pm 1$且$\mid u\mid < \mid \ell(Sv)\mid $。由于$\ell$是施赖埃尔陪集代表系，那么$u$是代表元，有$u = \ell(Su)$ 利用引理1.2的1，就有
+	$$
+		\ell(Sv)^S = u^S(x^\epsilon)^{Su}
+	$$
+	现在，归纳假设告诉我们$u^S$是特定$y_{Sb,x}$上的字，那么$u^S \in T$。
+	
+	剩下，我们证明$(x^\epsilon)^{Su}$是特定$y_{Sb,x}$上的字。那么现在有两种情况，$\epsilon = \pm 1$。那么$(x^\epsilon)^{Su} = x^{Su} = y_{Su,x}$。而$v = ux$且$\ell$是施赖埃尔陪集代表系，由定义，$v = ux $也在其中，所以$\ell(Sux) = ux$。从而
+	
+	$$
+	\varphi(y_{Su,x}) = t_{Su,x} = \ell(Su)x\ell(Sux)^{-1} = ux(ux)^{-1} =1
+	$$
+	
+	因此
+	
+	$$
+	\varphi((x^{-1})^{Su}) = (t_{Sux^{-1},x})^{-1} = [\ell(Sux^{-1})x\ell(Sux^{-1}x)]^{-1} = [\ell(Sux^{-1})x\ell(Su)]^{-1}
+	$$
+	
+	而$\ell$是施赖埃尔陪集代表系，就有$\ell(Su) = u$和$\ell(Sux^{-1}) = \ell(Sv) = v = ux^{-1}$。最后
+	$$
+	\varphi((x^{-1})^{Su}) = [(ux^{-1})xu^{-1}]^{-1} = 1
+	$$
+	所以他的逆$y_{Sux^{-1}}$也是特定的$y_{Sb,x}$中的一个，从而$(x^{-1})^{Su}\in T$。证明完毕
+	
+	
+	和阿贝尔群不同的是，有限生成群的子群未必是有限生成的
+	
+	\subsection{命题}
+	若$F$是秩为2的自由群，则它的换位子群$F'$是秩为无限的自由群。
+	
+	\paragraph{证明：}我们设$\left<x,y \right>$是$F$的基，那么$F/F'$就是以$\{xF',yF'\}$为基的自由阿贝尔群。因此每个陪集$F'b$有唯一形如$x^my^n$的代表元，其中$m,n\in\mathbb{Z}$。由于每个$x^my^n$的子字具备同样形式的字（由交换性得到），所以我们选取$\ell(F'b) = x^my^n$的陪集代表系就是施赖埃尔代表系，若$n>0$，则$\ell(F'y^n) = y^n$，但是$\ell(F'y^nx) = xy^n \neq y^nx$，从而存在无穷多个这样的元素$y_{Sy^n,x} = \ell(F'y^n)x\ell(F'y^nx)^{-1}\neq 1$。由尼尔森-施赖埃尔定理证毕。
+	
+	但，即使是有限生成自由群的任一子群未必是有限生成的，但指数有限的子群必然是有限生成的
+	
+	\subsection{定理}
+	若$F$是具备有限秩$n$的自由群，则$F$的每个具有有限指数$j$的子群$S$也是有限生成的，事实上，$\text{rank}(S) = jn-j+1$
+	
+	\paragraph{证明：} 我们设$X = \{x_1,\cdots,x_n\}$是$F$的基，再设$\ell = \{\ell(Sb)\}$是施赖埃尔陪集代表系。利用定理1.7，$S$的一组基是由那些不等于$1$的元素$t_{Sb,x}$组成的，其中$x\in X$，$Sb$有$j$种取法，而$x$有$n$种。所以$S$的基中至多有$jn$个元素，所以$rank(S)\leq jn$是有限生成的。
+	
+	定义平凡有序对$(Sb,x) = t_{Sb,x} = 1$。也就是$\ell(Sb)x = \ell(Sbx)$，我们现在要证明的是陪集族$(Sb\neq S)$和平凡有序对之间存在双射$\psi$，从而证明存在$j-1$个有序对。这样，只要剔除了$j-1$个1即可得到rank为
+	$$
+	\text{rank}(S) = jn - (j-1)
+	$$
+	由于$Sb\neq S$。那么$\ell(Sb) = ux^\epsilon$，因为$\ell$是施赖埃尔代表系，有$u\in \ell$，定义$\varphi(Sb)$如下
+\[
+\psi(Sux^\epsilon) = 
+\begin{cases} 
+	(Su, x) & \text{如果 } \epsilon = +1; \\ 
+	(Sux^{-1}, x) & \text{如果 } \epsilon = -1. 
+\end{cases}
+\]
+
+注意$\psi(Sux^\epsilon)$是平凡有序对，假设$\epsilon = 1$，则$\ell(Sux) = \ell(Sb) = b = ux$，从而$\ell(Su)x = ux$和$t_{Su,x} = 1$，注意$\ell(Su)x\ell(Sux)^{-1} = t_{Su,x} = 1$。若$\epsilon = -1$，则$\ell(Sbx) = \ell(Sux^{-1}x) = \ell(Su) = u$。从而$\ell(Sb)x = bx = ux^{-1}x = u$，就有$t_{Sb,x} = 1$
+
+为了得到$\psi$是单射，设$\psi(Sb) = \psi(Sc)$，其中$b = ux^\epsilon$和$c = vy^\eta$。我们假设$x,y$在$F$的基中且$\epsilon = \pm 1$，$\eta = \pm 1$。那么就存在4种可能性，他们依赖于$\epsilon$和$\eta$
+
+$$
+(Su,x) = (Sv,y),~ (Su,x) = (Svy^{-1},y)；~~(Sux^{-1},x) = (Sv,y),~~(Su,x) = (Svy^{-1},y)
+$$
+
+第一种情况，若$ (Su,x) = (Sv,y)$，则$Su= Sv$。那就有$Sb= Sux = Svx = Sc$。若$ (Su,x) = (Svy^{-1},y) $,那么$Su = Svx^{-1} = Sc$,从而$\ell(Su) = \ell(Sc) = c$，但$(Su,x)$是平凡有序对，那么$\ell(Su)x = \ell(Sux) = b$，从而$b = \ell(Su)x = cx = vx^{-1}x $，这是个矛盾。因为$b$是既约的。剩下的两种情况如上。最后，若$(Sux^{-1},x) = (Svx^{-1},x)$，则回到第一种情况，有$Sb = Sux^{-1} = Svx^{-} Sc$
+
+最后，我们证明$\psi$是满射。取平凡有序对$(Sw,x)$，也就是$\ell(Sw)x = wx = \ell(Swx)$，现在，$w = ux^\epsilon$，其中$u\in \ell$，且$\epsilon = \pm 1$，若$\epsilon = 1$，则$w$不以$x^{-1}$结尾，从而$\psi(Swx) = (Sw,x)$。若$\epsilon = -1$则$w$以$x^{-1}$结尾，从而$\psi(Su) = (Sux^{-1}) = (Sw,x)$，实际上就是验证了一下定义。
+
+\subsection{定理}
+
+存在不同构的有限生成群$G$和$H$，他们的每一个同构于另一个的子群
+
+\paragraph{证明：}若$G$是秩为2的自由群，$H$是秩为3的自由群，则$G\not\cong H$，现在，选择基里面任意2个元素生成的子群就是秩为2的子群，这表明$G$于此同构，最后，由于$G$的换位子群是无限群，它包含了一个秩为3的自由子群，即$H$和$G$的子群同构。
+\end{document}
